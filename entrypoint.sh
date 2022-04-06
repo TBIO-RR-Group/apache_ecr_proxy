@@ -15,7 +15,7 @@ ECR_TOKEN_ENDPOINT=${ECR_TOKEN_ENDPOINT//'/'/'\/'}
 ECR_TOKEN_ENDPOINT=${ECR_TOKEN_ENDPOINT//':'/'\:'}
 ECR_TOKEN_ENDPOINT=${ECR_TOKEN_ENDPOINT//'.'/'\.'}
 ECR_TOKEN_ENDPOINT=${ECR_TOKEN_ENDPOINT//'-'/'\-'}
-SED_CMD="sed -i s/__ECR_ENDPOINT__/$ECR_TOKEN_ENDPOINT/g /etc/apache2/sites-enabled/default-ssl.conf"
+SED_CMD="sed -i s/__ECR_ENDPOINT__/$ECR_TOKEN_ENDPOINT/g /etc/apache2/sites-available/default-ssl.conf"
 $($SED_CMD)
 ECR_TOKEN=$ECR_TOKEN eval 'apachectl -k start'
 
