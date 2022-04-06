@@ -9,3 +9,6 @@ ADD default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
 #ADD apache2.conf /etc/apache2/apache2.conf
 ADD auth_init.sh /
 ADD auth_update.sh /
+ADD entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
