@@ -6,7 +6,8 @@ RUN ln -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/ && ln 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install
 ADD ports.conf /etc/apache2/ports.conf
 ADD default-ssl.confTEMPLATE /etc/apache2/sites-available/default-ssl.confTEMPLATE
+RUN unlink /etc/apache2/sites-enabled/000-default.conf
 RUN ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/
 ADD entrypoint.sh /
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh", "443"]

@@ -8,6 +8,9 @@
 
 INIT_DONE=""
 
+SED_CMD_PORTS="sed -i s/__LISTEN_PORT__/$1/g /etc/apache2/ports.conf"
+$($SED_CMD_PORTS)
+
 while true
 do
     AUTH_INFO=$(aws ecr get-authorization-token --output text)
@@ -24,6 +27,9 @@ do
     $($SED_CMD)
     SED_CMD2="sed -i s/__ECR_TOKEN__/$ECR_TOKEN/g /etc/apache2/sites-available/default-ssl.conf"
     $($SED_CMD2)
+    SED_CMD3="sed -i s/__LISTEN_PORT__/$1/g /etc/apache2/sites-available/default-ssl.conf"
+    $($SED_CMD3)
+
     if [ -z $INIT_DONE ]; then
 	INIT_DONE="TRUE"
 	apachectl -k start
