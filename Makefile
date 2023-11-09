@@ -4,8 +4,8 @@ REGISTRY=docker.rdcloud.bms.com:443
 ECR_REGISTRY=483421617021.dkr.ecr.us-east-1.amazonaws.com
 LISTEN_PORT=443
 PLATFORM_ARG=--platform linux/amd64
-AWS_SECRET_ACCESS_KEY=tBa0ITCdw2rtgq6ZKOCBgrMJiVeVmYQEij6CeIxM
-AWS_ACCESS_KEY_ID=AKIAXBDRMPN67Q5Q5A2X
+AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_KEY_HERE>
+AWS_ACCESS_KEY_ID=<YOUR_ACCESS_KEY_HERE>
 AWS_DEFAULT_REGION=us-east-1
 CERT_FILE=/home/ec2-user/certs/new_tls_cert_230315/docker_rdcloud_bms_com_384850493/docker_rdcloud_bms_com.crt
 KEY_FILE=/home/ec2-user/certs/new_tls_cert_230315/docker.rdcloud.bms.com.key
@@ -31,7 +31,3 @@ run:
 
 shell:
 	docker run -it ${RUN_ARGS} ${SHELL_EXTRA_ARGS} --entrypoint /bin/bash ${REGISTRY}/${NAME}:${VERSION}
-
-#Got from here: https://forums.docker.com/t/how-to-remove-none-images-after-building/7050/3
-dockerrmi:
-	docker rmi $(docker images -f 'dangling=true' -q)
