@@ -4,6 +4,6 @@ A simple Apache2-based proxy for AWS ECR. I wanted to make use of ECR as our Doc
 
 A Makefile is included to build and run (but you will need to modify it with your own values for AWS credentials, etc.) E.g.
 
-make build
-make run
+`make build`
+`make run`
 etc.
