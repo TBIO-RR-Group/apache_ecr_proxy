@@ -4,6 +4,6 @@ A simple [Apache2](https://httpd.apache.org/)-based proxy for [AWS ECR](https://
 
 A Makefile is included to build and run (but you will need to modify it with your own values for AWS credentials, etc.) E.g.
 
-`make build`
-`make run`
+`make build`\
+`make run`\
 etc.
