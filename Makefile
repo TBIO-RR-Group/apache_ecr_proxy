@@ -12,7 +12,7 @@ KEY_FILE=/home/ec2-user/certs/new_tls_cert_230315/docker.rdcloud.bms.com.key
 
 AWS_ARGS=-e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
 CERTS_ARGS=-v ${CERT_FILE}:/etc/ssl/certs/domain.crt -v ${KEY_FILE}:/etc/ssl/certs/domain.key
-RUN_ARGS= --rm -p ${LISTEN_PORT}:${LISTEN_PORT} ${AWS_ARGS} ${CERTS_ARGS}
+RUN_ARGS= --restart always -p ${LISTEN_PORT}:${LISTEN_PORT} ${AWS_ARGS} ${CERTS_ARGS}
 SHELL_EXTRA_ARGS=-v ${PWD}:${PWD} -w ${PWD}
 
 
