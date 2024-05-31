@@ -1,14 +1,14 @@
 NAME=apache_ecr_proxy
 VERSION=latest
-REGISTRY=docker.rdcloud.bms.com:443
-ECR_REGISTRY=483421617021.dkr.ecr.us-east-1.amazonaws.com
-LISTEN_PORT=443
+REGISTRY=<ECR_PROXY_DOMAIN_AND_PORT>
+ECR_REGISTRY=<YOUR_AWS_ACCOUNT_ID>.dkr.ecr.<YOUR_AWS_REGION>.amazonaws.com
+LISTEN_PORT=<PORT THE ECR PROXY WILL LISTEN ON>
 PLATFORM_ARG=--platform linux/amd64
-AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_KEY_HERE>
-AWS_ACCESS_KEY_ID=<YOUR_ACCESS_KEY_HERE>
-AWS_DEFAULT_REGION=us-east-1
-CERT_FILE=/home/ec2-user/certs/new_tls_cert_230315/docker_rdcloud_bms_com_384850493/docker_rdcloud_bms_com.crt
-KEY_FILE=/home/ec2-user/certs/new_tls_cert_230315/docker.rdcloud.bms.com.key
+AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET ACCESS KEY>
+AWS_ACCESS_KEY_ID=<YOUR AWS ACCESS KEY>
+AWS_DEFAULT_REGION=<YOUR AWS REGION>
+CERT_FILE=/path/to/cert/cert.crt
+KEY_FILE=/path/to/key/cert.key
 
 AWS_ARGS=-e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
 CERTS_ARGS=-v ${CERT_FILE}:/etc/ssl/certs/domain.crt -v ${KEY_FILE}:/etc/ssl/certs/domain.key
